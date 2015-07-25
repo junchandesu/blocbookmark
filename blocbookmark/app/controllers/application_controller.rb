@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  #to prevent to get an error without a real page at Heroku
-  def herokuFirstPage
-  	render text: "<h2>This is the first page for the heroku deploy purpose</h2>"
+  def hello
+     render text: "<h1>Hello</h1><p>Welcome home</p>"
   end
 end
