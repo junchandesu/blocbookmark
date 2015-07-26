@@ -25,6 +25,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # layouts, forms, buttons, icons, Javascript functions, and more.
 gem 'bootstrap-sass'
 
+# authenticate users
+gem 'devise'
+# handling sensitive data with environment variables
+gem 'figaro', '1.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
