@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   #root website
   root to: 'welcome#index'
+
+  post :incoming, to: 'incoming#create'
+
+  resources :topics do
+    resources :bookmarks
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

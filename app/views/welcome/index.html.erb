@@ -5,10 +5,29 @@
 <div class="jumbotron">
   <h1>Bloc BookMark</h1>
   <p>Bloccit is a resource for sharing links with your friends!</p>
-  <p>
+  
+</div>
+  	<div class="row">
+  		
+	<h1> List of Topics with URLs</h1>
+	<% @topics.each do |topic| %>
+		<ul>
+		<%= link_to topic.title, topic %>
+		<%= link_to "Edit this topic", edit_topic_path(topic), class: 'btn btn-success' %>
+	    <%= link_to "Delete this topic", topic_path(topic), class: 'btn btn-danger', method: :delete %>
+	  	<% topic.bookmarks.each do |bookmark| %>
+	    	<li><%= bookmark.url %><br></li>
+	    <% end %>
+	</ul>
+	<% end %>
+	<br>
+	<br>
+	<%= link_to "Create a new topic", new_topic_path, class: 'btn btn-info' %>
+    </div>
+</div>
   	<% if !current_user %>
       <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
       <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+
       <% end %>
-  </p>
-</div>
+
