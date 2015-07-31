@@ -1,20 +1,24 @@
 class TopicsController < ApplicationController
-
+	include Pundit
 	def index
 		@topics = Topic.all
 	end
 
 	def new
 	@topic = Topic.new
+	authorize @topic
 	end
 
 	def show
 		@topic = Topic.find(params[:id])
 		@bookmarks = @topic.bookmarks.all
+		authorize @topic
 	end
+	
 	def create
 		@topic = Topic.new(topic_params)
 		@topic.user = current_user
+		authorize @topic
 		if @topic.save
 			redirect_to root_path, notice: "Topic was saved."
 		else
@@ -25,10 +29,12 @@ class TopicsController < ApplicationController
 
 	def edit
 		@topic = Topic.find(params[:id])
+		authorize @topic
 	end
 
 	def update
 		@topic = Topic.find(params[:id])
+		authorize @topic
 		if @topic.update_attributes(topic_params)
 			redirect_to root_path, notice: "Topic was updated."
 		else
@@ -40,6 +46,7 @@ class TopicsController < ApplicationController
 
 	def destroy
 		@topic = Topic.find(params[:id])
+		authorize @topic
 		if @topic.destroy
 			redirect_to root_path, notice: "Topic was destroyed."
 		else
