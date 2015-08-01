@@ -1,2 +1,2 @@
 <h1>Let's create a new bookmark under <%= @topic.title %> topic. </h1>
-<%= render partial: "form", locals: {topic: @topic, bookmark: @topic.bookmarks.new } %>
+<%= render partial: "form", locals: {topic: @topic, bookmark: Bookmark.new } %>

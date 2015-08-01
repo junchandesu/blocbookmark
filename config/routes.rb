@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   post :incoming, to: 'incoming#create'
 
   resources :topics do
-    resources :bookmarks
+    resources :bookmarks, except: [:index] do
+      resources :likes, only: [:create, :destroy]
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

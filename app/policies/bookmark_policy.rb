@@ -4,8 +4,6 @@ class BookmarkPolicy < ApplicationPolicy
 		true
 	end 
 
-
-
 	def update?
     	user.present? && (record.topic.user == user)
 	end

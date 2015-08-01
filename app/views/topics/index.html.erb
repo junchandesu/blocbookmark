@@ -2,11 +2,11 @@
 	<h1> List of Topics </h1>
 
 	<% @topics.each do |topic| %>
+    	<p><%= link_to topic.title, topic %>
     	<% if policy(topic).edit? %>
-	 	<p><%= link_to topic.title, topic %>
-			<%= link_to "Edit this topic", edit_topic_path(topic), class: 'btn btn-success' %>
+	 		<%= link_to "Edit this topic", edit_topic_path(topic), class: 'btn btn-success' %>
 		<% end %>
-		<% if policy(topic).detroy? %>
+		<% if policy(topic).destroy? %>
 	    	<%= link_to "Delete this topic", topic_path(topic), class: 'btn btn-danger', method: :delete %></p>
 	    <% end %>
 	<% end %>
