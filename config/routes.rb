@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   #root website
   root to: 'welcome#index'
-
+  resources :users, only: [:show]
   post :incoming, to: 'incoming#create'
 
   resources :topics do

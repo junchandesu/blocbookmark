@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :topics, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :bookmarks
   validates :name, presence: true, uniqueness: true
 
   def liked(bookmark)
   	likes.where(bookmark_id: bookmark.id).first
   end
+
+ 
 end
