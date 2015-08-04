@@ -3,8 +3,5 @@ class Topic < ActiveRecord::Base
   has_many  :bookmarks, dependent: :destroy
 
 
- def order_topic(bookmarks)
-    bookmarks.order("topic")
-  end
 
 end

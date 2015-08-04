@@ -1,25 +1,22 @@
 <dv class="row" >
 	<div class="col-md-8">
 	<h1><span class="glyphicon glyphicon-ok-circle"></span>My bookmark list</h1>
-	<% @topic = "" %>
-	<% order_topic(@user_bookmarks).each do |user_bookmark| %>
-		<% if !(@topic == user_bookmark.topic.title) %>
-				<h2><%= user_bookmark.topic.title %></h2>
-		    <% @topic = user_bookmark.topic.title %>
-		<% end %>
-			<%= user_bookmark.url %>
-		     
-    <% end %>
+	<% @user_bookmarks.each do |user_bookmark| %>
+		<% topic, bookmarks = user_bookmark %>	
+			<h3><p><%= topic.title %></p></h3>
+						<% bookmarks.each do |bookmark| %>
+							<p><%= bookmark.url %></p>
+						<% end %>
+	<% end %>
     <h1><span class="glyphicon glyphicon-heart"></span>My like bookmark list</h1>
-    <% @topic = "" %>
-	<% @liked_bookmarks.each do |liked_bookmark| %>
-		<% if !(@topic == liked_bookmark.bookmark.topic.title) %>
-				<h2><%= liked_bookmark.bookmark.topic.title %></h2>
-		    <% @topic = liked_bookmark.bookmark.topic.title %>
+   	<% @liked_bookmarks.each do |liked_bookmarks| %>
+   	  <% topic, bookmarks = liked_bookmarks %>
+		
+			<h3><p> <%= topic.title %></p></h3>
+		    	<% bookmarks.each do |bookmark| %>
+					<%= bookmark.url %>
+	<%= render partial: 'likes/like', locals: { bookmark: bookmark, topic: topic } %>
 		<% end %>
-		<%= liked_bookmark.bookmark.url %>
-	<%= render partial: 'likes/like', locals: { bookmark: liked_bookmark.bookmark, topic: liked_bookmark.bookmark.topic } %>
-
 	<% end %>
 	</div>
 </div>
