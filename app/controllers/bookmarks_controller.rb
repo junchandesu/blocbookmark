@@ -47,7 +47,7 @@ class BookmarksController < ApplicationController
 	def destroy
 		@topic = Topic.find(params[:topic_id])
 		@bookmark = @topic.bookmarks.find(params[:id])
-		authorize @bookmark
+		#authorize @bookmark
 		if @bookmark.destroy
 			redirect_to @topic, notice: "Bookmark was deleted"
 		else

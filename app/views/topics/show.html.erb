@@ -2,6 +2,7 @@
 
 <p><h2><%= @topic.title %></h2></p>
 
+<h4><%= link_to "Create a new bookmark", new_topic_bookmark_path(@topic, Bookmark.new), class: 'label label-info' %></h4>
 <h2><%= render partial: 'bookmarks/bookmark', locals: { topic: @topic, bookmark: @bookmark } %></h2>
 
 

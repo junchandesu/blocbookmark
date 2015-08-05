@@ -1,22 +1,24 @@
-<dv class="row" >
-	<div class="col-md-8">
+
 	<h1><span class="glyphicon glyphicon-ok-circle"></span>My bookmark list</h1>
 	<% @user_bookmarks.each do |user_bookmark| %>
+	<div class="row">
 		<% topic, bookmarks = user_bookmark %>	
 			<h3><p><%= topic.title %></p></h3>
-						<% bookmarks.each do |bookmark| %>
-							<p><%= bookmark.url %></p>
-						<% end %>
-	<% end %>
-    <h1><span class="glyphicon glyphicon-heart"></span>My like bookmark list</h1>
-   	<% @liked_bookmarks.each do |liked_bookmarks| %>
-   	  <% topic, bookmarks = liked_bookmarks %>
-		
-			<h3><p> <%= topic.title %></p></h3>
-		    	<% bookmarks.each do |bookmark| %>
-					<%= bookmark.url %>
-	<%= render partial: 'likes/like', locals: { bookmark: bookmark, topic: topic } %>
-		<% end %>
-	<% end %>
+			<%= render bookmarks %>
 	</div>
-</div>
+	<% end %>
+
+ <div class="row" >
+	<div class="col-md-12">
+    <h1><span class="glyphicon glyphicon-heart"></span>My like bookmark list</h1>
+	<% @liked_bookmarks.each do |user_bookmark| %>
+	<div class="row">
+		<% topic, bookmarks = user_bookmark %>	
+			<h3><p><%= topic.title %></p></h3>
+			<%= render bookmarks %>
+	</div>
+	<% end %>
+   	</div>
+ </div>
+
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
