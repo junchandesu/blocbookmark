@@ -1,0 +1,20 @@
+%h1
+  %span.glyphicon.glyphicon-ok-circle>
+  My bookmark list
+- @user_bookmarks.each do |user_bookmark|
+  .row
+    - topic, bookmarks = user_bookmark
+    %h3
+      %p= topic.title
+    = render bookmarks
+.row
+  .col-xs-12
+    %h1
+      %span.glyphicon.glyphicon-heart>
+      My like bookmark list
+    - @liked_bookmarks.each do |user_bookmark|
+      .row
+        - topic, bookmarks = user_bookmark
+        %h3
+          %p= topic.title
+        = render bookmarks

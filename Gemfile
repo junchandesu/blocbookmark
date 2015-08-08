@@ -33,6 +33,9 @@ gem 'figaro', '1.0'
 # User Authorization
 gem 'pundit'
 
+# convert from erb to haml extension
+gem 'haml'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

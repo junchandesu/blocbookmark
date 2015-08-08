@@ -1,0 +1,27 @@
+.container
+  %h1 Welcome to Bloc Bookmark create by Junko~
+%br
+  .jumbotron
+    %h1 Bloc BookMark
+    %p Bloccit is a resource for sharing links with your friends!
+  .row
+    %h1 List of Topics with URLs
+    - @topics.each do |topic|
+      %ul
+        = link_to topic.title, topic
+        - if policy(topic).edit?
+          = link_to "Edit this topic", edit_topic_path(topic), class: 'btn btn-success'
+        - if policy(topic).destroy?
+          = link_to "Delete this topic", topic_path(topic), class: 'btn btn-danger', method: :delete
+        - topic.bookmarks.each do |bookmark|
+          %li
+            = bookmark.url
+            %br/
+    %br
+      %br
+        - if current_user
+          = link_to "Create a new topic", new_topic_path, class: 'btn btn-info'
+  - if !current_user
+    = link_to "Sign In", new_user_session_path, class: 'btn btn-primary'
+    or
+    \#{link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary'} today!

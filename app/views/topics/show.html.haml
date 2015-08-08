@@ -1,0 +1,6 @@
+%p
+  %h2= @topic.title
+.row
+  .col-xs-12
+    = render @topic.bookmarks
+%h4= link_to "Create a new bookmark", new_topic_bookmark_path(@topic, Bookmark.new), class: 'label label-success'

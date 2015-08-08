@@ -1,0 +1,12 @@
+.row
+  %h1 List of Topics
+  - @topics.each do |topic|
+    %p
+      = link_to topic.title, topic
+      - if policy(topic).edit?
+        = link_to "Edit this topic", edit_topic_path(topic), class: 'btn btn-success'
+      - if policy(topic).destroy?
+        = link_to "Delete this topic", topic_path(topic), class: 'btn btn-danger', method: :delete
+  %br
+    %br
+      = link_to "Create a new topic", new_topic_path, class: 'btn btn-info'
