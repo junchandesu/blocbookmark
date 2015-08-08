@@ -13,6 +13,13 @@
 <% end %>
 
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8">
-$('a').embedly({
-      query: {maxheight:10} });
+ $('a').preview({key:'e49a5ceacb24496dba1805e3f05cfe92',
+                        preview:preview,
+                        selector : {type:'rich'},
+                        maxheight : 100,
+                        display : {display : 'rich'}}
+                        success : function(oembed){
+                                  oembed.title // gives you title
+                                  oembed.description // gives you description 
+                                  });
 </script>
