@@ -28,12 +28,12 @@ class TopicsController < ApplicationController
 	end
 
 	def edit
-		@topic = Topic.find(params[:id])
+		@topic = Topic.friendly.find(params[:id])
 		authorize @topic
 	end
 
 	def update
-		@topic = Topic.find(params[:id])
+		@topic = Topic.friendly.find(params[:id])
 		authorize @topic
 		if @topic.update_attributes(topic_params)
 			redirect_to root_path, notice: "Topic was updated."
@@ -45,7 +45,7 @@ class TopicsController < ApplicationController
 	end
 
 	def destroy
-		@topic = Topic.find(params[:id])
+		@topic = Topic.friendly.find(params[:id])
 		authorize @topic
 		if @topic.destroy
 			redirect_to root_path, notice: "Topic was destroyed."
