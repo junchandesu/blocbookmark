@@ -2,7 +2,7 @@
  %div
   - if like = current_user.liked(bookmark)
    = link_to [bookmark.topic, bookmark, like], class: 'btn btn-danger', method: :delete do
-    %i.glyphicon.glyphicon-star-empty \&nbsp; Unlike
+    %i.glyphicon.glyphicon-star-empty &nbsp;Unlike
   - else
    = link_to [bookmark.topic, bookmark, Like.new], class: 'btn btn-primary', method: :post do
-    %i.glyphicon.glyphicon-star \&nbsp; Like
+    %i.glyphicon.glyphicon-star &nbsp;Like

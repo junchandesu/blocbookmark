@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801193235) do
+ActiveRecord::Schema.define(version: 20150809001254) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.string   "url"
@@ -40,8 +40,10 @@ ActiveRecord::Schema.define(version: 20150801193235) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
 
+  add_index "topics", ["slug"], name: "index_topics_on_slug"
   add_index "topics", ["user_id"], name: "index_topics_on_user_id"
 
   create_table "users", force: :cascade do |t|
@@ -62,9 +64,11 @@ ActiveRecord::Schema.define(version: 20150801193235) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["slug"], name: "index_users_on_slug"
 
 end

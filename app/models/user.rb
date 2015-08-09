@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :like_bookmarks, through: :likes, source: :bookmark
   validates :name, presence: true, uniqueness: true
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   def liked(bookmark)
   	likes.where(bookmark_id: bookmark.id).first
   end

@@ -6,5 +6,4 @@
  %h4= link_to "Delete bookmark", topic_bookmark_path(bookmark.topic, bookmark), method: :delete,class: 'label label-info', data: {confirm: 'Are you sure you want to delete this?'} 
  %h4= render partial: 'likes/like', locals: { bookmark: bookmark, topic: bookmark.topic }
 %script{ :src => "//cdn.embedly.com/widgets/platform.js", :charset => "UTF-8" }
- $('a').preview({key:'e49a5ceacb24496dba1805e3f05cfe92', preview:preview, selector : {type:'rich'}, maxheight : 100,
- display : {display : 'rich'}} success : function(oembed){ oembed.title, oembed.description});
+ $('a').preview({key:'e49a5ceacb24496dba1805e3f05cfe92', preview:preview, selector : {type:'rich'}, maxheight : 150, display : {display : 'rich'}} success : function(oembed){ oembed.title, oembed.description});

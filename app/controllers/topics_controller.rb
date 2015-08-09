@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
 	end
 
 	def show
-		@topic = Topic.find(params[:id])
+		@topic = Topic.friendly.find(params[:id])
 		@bookmarks = @topic.bookmarks.all
 		authorize @topic
 	end
